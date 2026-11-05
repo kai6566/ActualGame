@@ -44,6 +44,37 @@ public class Game {
 		}
 	}
 
+	public static void openItem(String n) {
+		Items i = currentRoom.getItems(n);
+
+		if (i == null) {
+			print("This item is not in the room.");
+		} else {
+			i.open();
+		}
+	}
+
+	public static void closeItem(String n) {
+		Items i = currentRoom.getItems(n);
+
+		if (i == null) {
+			print("This item is not in the room.");
+		} else {
+			i.close();
+		}
+	}
+
+	public static void readItem(String n) {
+		for (Items i : item) {
+			if (i.getName().equals(n)) {
+				i.read();
+				return;
+			}
+		}
+
+		print("You do not have this item.");
+	}
+
 	public static void saveGame() {
 		try {
 			File saveFile = new File("save0.sav"); // name the file yourself
@@ -123,6 +154,30 @@ public class Game {
 		case "load":
 			loadGame();
 			Game.print("you loaded a game");
+			break;
+
+		case "open":
+			if (command.length == 1) {
+				print("Open what?");
+			} else {
+				openItem(command[1]);
+			}
+			break;
+
+		case "close":
+			if (command.length == 1) {
+				print("Close what?");
+			} else {
+				closeItem(command[1]);
+			}
+			break;
+
+		case "read":
+			if (command.length == 1) {
+				print("Read what?");
+			} else {
+				readItem(command[1]);
+			}
 			break;
 
 		case "exit":
