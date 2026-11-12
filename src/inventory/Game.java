@@ -75,6 +75,16 @@ public class Game {
 		print("You do not have this item.");
 	}
 
+	public static void talkNPC(String n) {
+		NPC npc = currentRoom.getNPC(n);
+
+		if (npc == null) {
+			print("This person is not in the room.");
+		} else {
+			npc.talk();
+		}
+	}
+
 	public static void saveGame() {
 		try {
 			File saveFile = new File("save0.sav"); // name the file yourself
@@ -193,6 +203,14 @@ public class Game {
 				takeItem(command[1]);
 			}
 
+			break;
+
+		case "talk":
+			if (command.length == 1) {
+				print("Talk to who?");
+			} else {
+				talkNPC(command[1]);
+			}
 			break;
 
 		case "use":

@@ -37,6 +37,8 @@ public class World {
 		Items mysteriousorb = new Items("mysteriousorb", false);
 		Items couch = new Items("couch", true);
 		Items Safe = new Safe();
+		NPC bobo = new Bobo();
+		NPC joe = new Joe();
 		
 		bedroom.addExit(attic, 4); // 4=up
 		bedroom.addExit(livingRoom, 3); // 3=south
@@ -56,6 +58,8 @@ public class World {
 		kitchen.addItem(knife);
 		kitchen.addItem(mysteriousorb);
 		attic.addItem(Safe);
+		livingRoom.setNPC(bobo);
+		kitchen.setNPC(joe);
 		attic.setIslocked(true);
 		office.setIslocked(true);
 		garage.setIslocked(true);
