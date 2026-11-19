@@ -208,6 +208,8 @@ public class Game {
 		case "talk":
 			if (command.length == 1) {
 				print("Talk to who?");
+			} else if (command[1].equals("to") && command.length > 2) {
+				talkNPC(command[2]);
 			} else {
 				talkNPC(command[1]);
 			}
